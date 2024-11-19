@@ -1,0 +1,31 @@
+# .NET Core build folders
+bin/
+obj/
+
+# Coverage results
+coverage.json
+coverage.cobertura.xml
+TestResults/
+
+# VS Code directory
+.vscode/
+
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Rider files
+.idea/
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Arquivos de cobertura
+coverage.cobertura.xml
+coveragereport/
+*.coverage
+TestResults/
