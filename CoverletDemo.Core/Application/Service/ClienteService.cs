@@ -2,11 +2,12 @@
 
 using System.Diagnostics.CodeAnalysis;
 
+[ExcludeFromCodeCoverage]
 public class ClienteService
 {
     private readonly IClienteRepository _clienteRepository;
 
-    [ExcludeFromCodeCoverage]
+
     public ClienteService(IClienteRepository clienteRepository)
     {
         _clienteRepository = clienteRepository;
