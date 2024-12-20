@@ -33,13 +33,15 @@ jobs:
       - name: Install reportgenerator tool
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
+      - name: List coverage files
+        run: |
+          # Verificar os arquivos de cobertura gerados no diretório TestResults
+          ls -l **/TestResults/**/*.xml
+
       - name: Generate coverage report
         run: |
-          # Verificar se os arquivos de cobertura realmente existem
-          ls -l **/coverage/*.xml
-
-          # Gerar o relatório de cobertura
-          reportgenerator -reports:**/coverage/*.xml -targetdir:coverage-report
+          # Gerar o relatório de cobertura com o caminho correto para os arquivos XML
+          reportgenerator -reports:**/TestResults/**/*.xml -targetdir:coverage-report
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
