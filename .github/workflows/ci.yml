@@ -28,11 +28,17 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Run tests with coverage
-        run: dotnet test --collect:"XPlat Code Coverage"
+        run: dotnet test --configuration Release --collect:"XPlat Code Coverage"
+
+      - name: Install reportgenerator tool
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Generate coverage report
         run: |
-          dotnet tool install --global dotnet-reportgenerator-globaltool
+          # Verificar se os arquivos de cobertura realmente existem
+          ls -l **/coverage/*.xml
+
+          # Gerar o relatório de cobertura
           reportgenerator -reports:**/coverage/*.xml -targetdir:coverage-report
 
       - name: Upload coverage report
